@@ -106,8 +106,10 @@
 
 <div class="card">
 <section class="screen name-screen">
-<h2>Who are you?</h2><p class="small">There is only one correct answer.</p>
-<label for="md-step-date" class="choice selected-name">Kuba <span style="float:right">→</span></label>
+<h2>What's your name?</h2><p class="small">Enter your name below.</p>
+<input id="guest-name" type="text" placeholder="Your name" autocomplete="name"
+  style="position:static;opacity:1;width:100%;height:auto;pointer-events:auto;border:1px solid var(--line);border-radius:16px;padding:16px;font:inherit;color:var(--text);background:#fff;">
+<button type="button" id="name-next" class="continue">Continue →</button>
 </section>
 
 <section class="screen date-screen">
@@ -149,107 +151,118 @@
 <section class="screen confirm-screen">
 <label for="md-step-time" class="back">← Back</label>
 <h2>Make it official 💕</h2><p class="small">Check the details, then pay the €30 date fee through Tikkie.</p>
-<div class="confirm-summary summary-default"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Choose a date and time</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-12-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Monday 12 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-12-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Monday 12 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-12-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Monday 12 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-12-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Monday 12 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-13-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Tuesday 13 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-13-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Tuesday 13 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-13-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Tuesday 13 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-13-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Tuesday 13 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-14-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Wednesday 14 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-14-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Wednesday 14 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-14-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Wednesday 14 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-14-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Wednesday 14 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-15-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Thursday 15 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-15-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Thursday 15 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-15-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Thursday 15 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-15-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Thursday 15 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-16-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Friday 16 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-16-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Friday 16 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-16-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Friday 16 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-16-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Friday 16 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-17-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Saturday 17 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-17-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Saturday 17 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-17-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Saturday 17 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-17-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Saturday 17 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-18-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-18-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-18-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
-<div class="confirm-summary summary-18-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-default"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Choose a date and time</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-12-18"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Monday 12 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-12-19"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Monday 12 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-12-20"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Monday 12 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-12-21"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Monday 12 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-13-18"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Tuesday 13 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-13-19"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Tuesday 13 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-13-20"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Tuesday 13 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-13-21"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Tuesday 13 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-14-18"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Wednesday 14 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-14-19"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Wednesday 14 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-14-20"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Wednesday 14 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-14-21"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Wednesday 14 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-15-18"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Thursday 15 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-15-19"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Thursday 15 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-15-20"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Thursday 15 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-15-21"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Thursday 15 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-16-18"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Friday 16 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-16-19"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Friday 16 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-16-20"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Friday 16 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-16-21"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Friday 16 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-17-18"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Saturday 17 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-17-19"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Saturday 17 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-17-20"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Saturday 17 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-17-21"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Saturday 17 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-18-18"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-18-19"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-18-20"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-18-21"><div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
 <a class="pay" href="https://tikkie.me/pay/3o2bp83i0a0tfc2367hi" target="_blank" rel="noopener noreferrer">Pay €30 via Tikkie →</a>
 <button type="button" id="md-paid-button" class="continue">I've paid, show confirmation →</button>
 </section>
 
 <section class="screen done-screen" style="text-align:center">
-<div class="heart">💕</div><h2>Date request sent!</h2><p class="small">Kuba, your date request has been recorded. Please make sure the details below are correct.</p>
-<div class="selected-summary"><div class="row"><span>Name</span><strong id="done-name">Kuba</strong></div><div class="row"><span>Date</span><strong id="done-date">—</strong></div><div class="row"><span>Time</span><strong id="done-time">—</strong></div><div class="row"><span>Payment</span><strong>€30 Tikkie</strong></div></div>
+<div class="heart">💕</div><h2>Date request sent!</h2><p class="small"><span id="done-greeting">Your</span> date request has been recorded. Please make sure the details below are correct.</p>
+<div class="selected-summary"><div class="row"><span>Name</span><strong class="guest-name-display">—</strong></div><div class="row"><span>Date</span><strong id="done-date">—</strong></div><div class="row"><span>Time</span><strong id="done-time">—</strong></div><div class="row"><span>Payment</span><strong>€30 Tikkie</strong></div></div>
 </section>
-
-<!-- Payment notification form. FormSubmit sends the "I've paid" notification
-     to the owner's email without exposing email credentials in this page. -->
-<form id="paid-notification-form"
-      action="https://formsubmit.co/bragheeth@gmail.com"
-      method="POST"
-      target="paid-notification-frame"
-      style="display:none">
-  <input type="hidden" name="_subject" value="Someone marked the Menna date as paid 💕">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="Name" value="Kuba">
-  <input type="hidden" name="Date" id="email-date">
-  <input type="hidden" name="Time" id="email-time">
-  <input type="hidden" name="Payment" value="€30 Tikkie - marked as paid">
-</form>
-<iframe name="paid-notification-frame" id="paid-notification-frame" style="display:none"></iframe>
 
 <script>
 (function () {
-  const paidButton = document.getElementById('md-paid-button');
+  const nameInput = document.getElementById('guest-name');
+  const nameNext = document.getElementById('name-next');
+  const stepDate = document.getElementById('md-step-date');
   const stepDone = document.getElementById('md-step-done');
-  const dateOutput = document.getElementById('done-date');
-  const timeOutput = document.getElementById('done-time');
-  const emailDate = document.getElementById('email-date');
-  const emailTime = document.getElementById('email-time');
-  const form = document.getElementById('paid-notification-form');
+  const displays = document.querySelectorAll('.guest-name-display');
+  const doneGreeting = document.getElementById('done-greeting');
+  const doneDate = document.getElementById('done-date');
+  const doneTime = document.getElementById('done-time');
 
-  const dateLabels = {
-    "12": "Monday 12 October 2026",
-    "13": "Tuesday 13 October 2026",
-    "14": "Wednesday 14 October 2026",
-    "15": "Thursday 15 October 2026",
-    "16": "Friday 16 October 2026",
-    "17": "Saturday 17 October 2026",
-    "18": "Sunday 18 October 2026"
+  const dates = {
+    "12":"Monday 12 October 2026","13":"Tuesday 13 October 2026",
+    "14":"Wednesday 14 October 2026","15":"Thursday 15 October 2026",
+    "16":"Friday 16 October 2026","17":"Saturday 17 October 2026",
+    "18":"Sunday 18 October 2026"
   };
 
-  paidButton.addEventListener('click', function () {
-    const chosen = document.querySelector('input[name="chosen"]:checked');
-
-    if (!chosen) {
-      alert('Please choose a date and time first.');
+  nameNext.addEventListener('click', function () {
+    const name = nameInput.value.trim();
+    if (!name) {
+      nameInput.focus();
       return;
     }
+    displays.forEach(el => el.textContent = name);
+    doneGreeting.textContent = name + ', your';
+    stepDate.checked = true;
+  });
 
-    // IDs are in the format chosen-12-18, chosen-13-19, etc.
-    const parts = chosen.id.split('-');
-    const day = parts[1];
-    const hour = parts[2] + ':00';
+  // Persist a paid booking in localStorage. On future visits to this page,
+  // that exact date/time is hidden until it is no longer available.
+  const BOOKING_KEY = 'mennaPaidBooking';
+  let booking = null;
+  try { booking = JSON.parse(localStorage.getItem(BOOKING_KEY) || 'null'); } catch(e) {}
 
-    const selectedDate = dateLabels[day];
+  if (booking && booking.slot) {
+    const booked = document.getElementById('chosen-' + booking.slot);
+    if (booked) {
+      const label = document.querySelector('label[for="chosen-' + booking.slot + '"]');
+      if (label) {
+        label.textContent = 'Booked';
+        label.style.opacity = '.45';
+        label.style.cursor = 'not-allowed';
+        label.removeAttribute('for');
+        label.classList.add('booked-slot');
+      }
+      booked.disabled = true;
+    }
+  }
 
-    // Show the exact choices on the final confirmation screen.
-    dateOutput.textContent = selectedDate;
-    timeOutput.textContent = hour;
+  // Mark the selected slot as booked when "I've paid" is clicked.
+  document.addEventListener('click', function (e) {
+    if (!e.target.matches('#md-paid-button')) return;
 
-    // Put the same choices into the email notification.
-    emailDate.value = selectedDate;
-    emailTime.value = hour;
+    const selected = document.querySelector('input[name="chosen"]:checked');
+    if (!selected || selected.disabled) return;
 
-    // Send the notification, then show the confirmation screen.
-    form.submit();
-    stepDone.checked = true;
+    const slot = selected.id.replace('chosen-', '');
+    const parts = slot.split('-');
+    const day = parts[0];
+    const hour = parts[1] + ':00';
+
+    try {
+      localStorage.setItem(BOOKING_KEY, JSON.stringify({
+        slot: slot,
+        date: dates[day],
+        time: hour,
+        name: nameInput.value.trim(),
+        paid: true
+      }));
+    } catch(e) {}
+
+    doneDate.textContent = dates[day] || '—';
+    doneTime.textContent = hour;
   });
 })();
 </script>
