@@ -179,6 +179,264 @@
 <div class="confirm-summary summary-18-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
 <div class="confirm-summary summary-18-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
 <a class="pay" href="https://tikkie.me/pay/3o2bp83i0a0tfc2367hi" target="_blank" rel="noopener noreferrer">Pay €30 via Tikkie →</a>
+<button type="button" id="md-paid-button" class="continue">I've paid, show confirmation →</button>
+</section>
+
+<section class="screen done-screen" style="text-align:center">
+<div class="heart">💕</div><h2>Date request sent!</h2><p class="small">Kuba, your date request has been recorded. Please make sure the details below are correct.</p>
+<div class="selected-summary"><div class="row"><span>Name</span><strong id="done-name">Kuba</strong></div><div class="row"><span>Date</span><strong id="done-date">—</strong></div><div class="row"><span>Time</span><strong id="done-time">—</strong></div><div class="row"><span>Payment</span><strong>€30 Tikkie</strong></div></div>
+</section>
+
+<!-- Payment notification form. FormSubmit sends the "I've paid" notification
+     to the owner's email without exposing email credentials in this page. -->
+<form id="paid-notification-form"
+      action="https://formsubmit.co/bragheeth@gmail.com"
+      method="POST"
+      target="paid-notification-frame"
+      style="display:none">
+  <input type="hidden" name="_subject" value="Someone marked the Menna date as paid 💕">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="Name" value="Kuba">
+  <input type="hidden" name="Date" id="email-date">
+  <input type="hidden" name="Time" id="email-time">
+  <input type="hidden" name="Payment" value="€30 Tikkie - marked as paid">
+</form>
+<iframe name="paid-notification-frame" id="paid-notification-frame" style="display:none"></iframe>
+
+<script>
+(function () {
+  const paidButton = document.getElementById('md-paid-button');
+  const stepDone = document.getElementById('md-step-done');
+  const dateOutput = document.getElementById('done-date');
+  const timeOutput = document.getElementById('done-time');
+  const emailDate = document.getElementById('email-date');
+  const emailTime = document.getElementById('email-time');
+  const form = document.getElementById('paid-notification-form');
+
+  const dateLabels = {
+    "12": "Monday 12 October 2026",
+    "13": "Tuesday 13 October 2026",
+    "14": "Wednesday 14 October 2026",
+    "15": "Thursday 15 October 2026",
+    "16": "Friday 16 October 2026",
+    "17": "Saturday 17 October 2026",
+    "18": "Sunday 18 October 2026"
+  };
+
+  paidButton.addEventListener('click', function () {
+    const chosen = document.querySelector('input[name="chosen"]:checked');
+
+    if (!chosen) {
+      alert('Please choose a date and time first.');
+      return;
+    }
+
+    // IDs are in the format chosen-12-18, chosen-13-19, etc.
+    const parts = chosen.id.split('-');
+    const day = parts[1];
+    const hour = parts[2] + ':00';
+
+    const selectedDate = dateLabels[day];
+
+    // Show the exact choices on the final confirmation screen.
+    dateOutput.textContent = selectedDate;
+    timeOutput.textContent = hour;
+
+    // Put the same choices into the email notification.
+    emailDate.value = selectedDate;
+    emailTime.value = hour;
+
+    // Send the notification, then show the confirmation screen.
+    form.submit();
+    stepDone.checked = true;
+  });
+})();
+</script>
+
+</div>
+</div>
+<div id="menna-date-app"><style>
+#menna-date-app{--bg:#fff8fb;--card:#fff;--text:#241d22;--muted:#766a72;--line:#eadde3;--pink:#e96b9a;--pink-dark:#c74f7d;--soft:#fdebf2;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;color:var(--text);max-width:560px;margin:0 auto;padding:24px 16px 48px}
+#menna-date-app *{box-sizing:border-box}
+#menna-date-app input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+#menna-date-app .hero{text-align:center;padding:10px 0 22px}
+#menna-date-app .heart{font-size:44px;line-height:1}
+#menna-date-app .eyebrow{color:var(--pink-dark);font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;margin-top:10px}
+#menna-date-app h1{font-size:32px;line-height:1.1;margin:8px 0;letter-spacing:-.03em}
+#menna-date-app .sub{color:var(--muted);line-height:1.5;margin:0}
+#menna-date-app .card{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 14px 40px rgba(50,25,40,.06)}
+#menna-date-app .screen{display:none}
+#md-step-name:checked ~ .card .name-screen,
+#md-step-date:checked ~ .card .date-screen,
+#md-step-time:checked ~ .card .time-screen,
+#md-step-confirm:checked ~ .card .confirm-screen,
+#md-step-done:checked ~ .card .done-screen{display:block}
+#menna-date-app h2{font-size:22px;margin:0 0 8px}
+#menna-date-app .small{font-size:14px;color:var(--muted);margin:0 0 18px;line-height:1.5}
+#menna-date-app .choice,#menna-date-app .continue,#menna-date-app .back,#menna-date-app .time-choice{font:inherit;display:block;text-decoration:none;cursor:pointer}
+#menna-date-app .choice{width:100%;border:1px solid var(--line);background:#fff;border-radius:16px;padding:16px;text-align:left;font-weight:800;color:var(--text)}
+#menna-date-app .choice:hover{border-color:var(--pink);background:#fff9fb}
+#menna-date-app .continue{border:0;background:var(--pink);color:#fff;border-radius:16px;padding:16px;font-weight:900;text-align:center;margin-top:16px;width:100%}
+#menna-date-app .continue:hover{background:var(--pink-dark)}
+#menna-date-app .back{border:0;background:none;color:var(--muted);padding:6px 0 14px}
+#menna-date-app .calendar-head{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;text-align:center;margin:8px 0 12px}
+#menna-date-app .month-title{font-weight:800;font-size:18px}
+#menna-date-app .month-arrow{width:40px;height:40px;border:1px solid var(--line);background:#f7f2f4;border-radius:12px;font-size:24px;line-height:1;color:#aaa;display:flex;align-items:center;justify-content:center}
+#menna-date-app .weekdays,#menna-date-app .calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+#menna-date-app .weekdays{text-align:center;color:var(--muted);font-size:11px;font-weight:800;padding-bottom:6px}
+#menna-date-app .day{min-width:0;aspect-ratio:1;border:1px solid transparent;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:650;color:#aaa;font-size:14px;position:relative;padding:0;text-decoration:none}
+#menna-date-app .day.empty{background:transparent;border:0}
+#menna-date-app .day.available{color:var(--text);border-color:#efbfd1;background:#fff9fb;cursor:pointer}
+#menna-date-app .day.available:hover{border-color:var(--pink);background:var(--soft)}
+#menna-date-app .day.available::after{content:"";position:absolute;bottom:5px;width:5px;height:5px;border-radius:50%;background:var(--pink)}
+#menna-date-app .time-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+#menna-date-app .time-choice{border:1px solid var(--line);background:#fff;border-radius:16px;padding:15px;font-weight:800;color:var(--text);text-align:center}
+#menna-date-app .time-choice:hover{border-color:var(--pink);background:var(--soft)}
+#menna-date-app .date-picked{margin-top:18px;padding:14px 16px;border-radius:16px;background:var(--soft);font-size:14px}
+#menna-date-app .time-date-group{display:none}
+#menna-date-app .confirm-summary{display:none}
+#menna-date-app .summary-default{display:block}
+#menna-date-app .selected-summary{background:var(--soft);border-radius:18px;padding:16px;margin:18px 0}
+#menna-date-app .row{display:flex;justify-content:space-between;gap:15px;padding:7px 0}
+#menna-date-app .row span{color:var(--muted)}
+#menna-date-app .pay{display:block;width:100%;border:0;border-radius:16px;padding:16px;background:var(--pink);color:#fff;font-weight:900;font-size:16px;text-decoration:none;text-align:center}
+#menna-date-app .pay:hover{background:var(--pink-dark)}
+#menna-date-app .notice{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}
+#menna-date-app .tikkie-notice{margin-top:14px;background:var(--soft);border:1px solid #efbfd1;border-radius:14px;padding:13px 14px;font-size:12px;line-height:1.55;color:var(--text);word-break:break-word}
+#menna-date-app .tikkie-notice a{color:var(--pink-dark);font-weight:700}
+#menna-date-app .tiny-note{font-size:12px;color:var(--muted);margin-top:10px}
+
+/* Name selection feedback */
+#menna-date-app .choice.selected-name{border:2px solid var(--pink);background:var(--soft)}
+
+/* Calendar selection */
+#date-12:checked ~ .card .d12,#date-13:checked ~ .card .d13,#date-14:checked ~ .card .d14,#date-15:checked ~ .card .d15,#date-16:checked ~ .card .d16,#date-17:checked ~ .card .d17,#date-18:checked ~ .card .d18{outline:3px solid var(--pink);background:var(--pink);color:#fff;border-color:var(--pink)}
+#date-12:checked ~ .card .d12::after,#date-13:checked ~ .card .d13::after,#date-14:checked ~ .card .d14::after,#date-15:checked ~ .card .d15::after,#date-16:checked ~ .card .d16::after,#date-17:checked ~ .card .d17::after,#date-18:checked ~ .card .d18::after{background:#fff}
+#menna-date-app .sel-date{display:none}
+#date-12:checked ~ .card #sel12,#date-13:checked ~ .card #sel13,#date-14:checked ~ .card #sel14,#date-15:checked ~ .card #sel15,#date-16:checked ~ .card #sel16,#date-17:checked ~ .card #sel17,#date-18:checked ~ .card #sel18{display:block}
+#date-12:checked ~ .card .date-name-default,#date-13:checked ~ .card .date-name-default,#date-14:checked ~ .card .date-name-default,#date-15:checked ~ .card .date-name-default,#date-16:checked ~ .card .date-name-default,#date-17:checked ~ .card .date-name-default,#date-18:checked ~ .card .date-name-default{display:none}
+
+/* Time options for chosen date */
+#date-12:checked ~ .card .time-date-12,#date-13:checked ~ .card .time-date-13,#date-14:checked ~ .card .time-date-14,#date-15:checked ~ .card .time-date-15,#date-16:checked ~ .card .time-date-16,#date-17:checked ~ .card .time-date-17,#date-18:checked ~ .card .time-date-18{display:block}
+
+/* Visual pressed state for each time. */
+#chosen-12-18:checked ~ .card label[for="chosen-12-18"],#chosen-12-19:checked ~ .card label[for="chosen-12-19"],#chosen-12-20:checked ~ .card label[for="chosen-12-20"],#chosen-12-21:checked ~ .card label[for="chosen-12-21"],#chosen-13-18:checked ~ .card label[for="chosen-13-18"],#chosen-13-19:checked ~ .card label[for="chosen-13-19"],#chosen-13-20:checked ~ .card label[for="chosen-13-20"],#chosen-13-21:checked ~ .card label[for="chosen-13-21"],#chosen-14-18:checked ~ .card label[for="chosen-14-18"],#chosen-14-19:checked ~ .card label[for="chosen-14-19"],#chosen-14-20:checked ~ .card label[for="chosen-14-20"],#chosen-14-21:checked ~ .card label[for="chosen-14-21"],#chosen-15-18:checked ~ .card label[for="chosen-15-18"],#chosen-15-19:checked ~ .card label[for="chosen-15-19"],#chosen-15-20:checked ~ .card label[for="chosen-15-20"],#chosen-15-21:checked ~ .card label[for="chosen-15-21"],#chosen-16-18:checked ~ .card label[for="chosen-16-18"],#chosen-16-19:checked ~ .card label[for="chosen-16-19"],#chosen-16-20:checked ~ .card label[for="chosen-16-20"],#chosen-16-21:checked ~ .card label[for="chosen-16-21"],#chosen-17-18:checked ~ .card label[for="chosen-17-18"],#chosen-17-19:checked ~ .card label[for="chosen-17-19"],#chosen-17-20:checked ~ .card label[for="chosen-17-20"],#chosen-17-21:checked ~ .card label[for="chosen-17-21"],#chosen-18-18:checked ~ .card label[for="chosen-18-18"],#chosen-18-19:checked ~ .card label[for="chosen-18-19"],#chosen-18-20:checked ~ .card label[for="chosen-18-20"],#chosen-18-21:checked ~ .card label[for="chosen-18-21"]{border:2px solid var(--pink);background:var(--soft);box-shadow:0 0 0 2px rgba(233,107,154,.08)}
+
+/* Only allow progression when a choice exists. */
+#menna-date-app .date-next,#menna-date-app .time-next{display:none}
+#date-12:checked ~ .card .date-next,#date-13:checked ~ .card .date-next,#date-14:checked ~ .card .date-next,#date-15:checked ~ .card .date-next,#date-16:checked ~ .card .date-next,#date-17:checked ~ .card .date-next,#date-18:checked ~ .card .date-next{display:block}
+#chosen-12-18:checked ~ .card .time-next,#chosen-12-19:checked ~ .card .time-next,#chosen-12-20:checked ~ .card .time-next,#chosen-12-21:checked ~ .card .time-next,#chosen-13-18:checked ~ .card .time-next,#chosen-13-19:checked ~ .card .time-next,#chosen-13-20:checked ~ .card .time-next,#chosen-13-21:checked ~ .card .time-next,#chosen-14-18:checked ~ .card .time-next,#chosen-14-19:checked ~ .card .time-next,#chosen-14-20:checked ~ .card .time-next,#chosen-14-21:checked ~ .card .time-next,#chosen-15-18:checked ~ .card .time-next,#chosen-15-19:checked ~ .card .time-next,#chosen-15-20:checked ~ .card .time-next,#chosen-15-21:checked ~ .card .time-next,#chosen-16-18:checked ~ .card .time-next,#chosen-16-19:checked ~ .card .time-next,#chosen-16-20:checked ~ .card .time-next,#chosen-16-21:checked ~ .card .time-next,#chosen-17-18:checked ~ .card .time-next,#chosen-17-19:checked ~ .card .time-next,#chosen-17-20:checked ~ .card .time-next,#chosen-17-21:checked ~ .card .time-next,#chosen-18-18:checked ~ .card .time-next,#chosen-18-19:checked ~ .card .time-next,#chosen-18-20:checked ~ .card .time-next,#chosen-18-21:checked ~ .card .time-next{display:block}
+
+/* Confirmation */
+#chosen-12-18:checked ~ .card .summary-12-18,#chosen-12-19:checked ~ .card .summary-12-19,#chosen-12-20:checked ~ .card .summary-12-20,#chosen-12-21:checked ~ .card .summary-12-21,#chosen-13-18:checked ~ .card .summary-13-18,#chosen-13-19:checked ~ .card .summary-13-19,#chosen-13-20:checked ~ .card .summary-13-20,#chosen-13-21:checked ~ .card .summary-13-21,#chosen-14-18:checked ~ .card .summary-14-18,#chosen-14-19:checked ~ .card .summary-14-19,#chosen-14-20:checked ~ .card .summary-14-20,#chosen-14-21:checked ~ .card .summary-14-21,#chosen-15-18:checked ~ .card .summary-15-18,#chosen-15-19:checked ~ .card .summary-15-19,#chosen-15-20:checked ~ .card .summary-15-20,#chosen-15-21:checked ~ .card .summary-15-21,#chosen-16-18:checked ~ .card .summary-16-18,#chosen-16-19:checked ~ .card .summary-16-19,#chosen-16-20:checked ~ .card .summary-16-20,#chosen-16-21:checked ~ .card .summary-16-21,#chosen-17-18:checked ~ .card .summary-17-18,#chosen-17-19:checked ~ .card .summary-17-19,#chosen-17-20:checked ~ .card .summary-17-20,#chosen-17-21:checked ~ .card .summary-17-21,#chosen-18-18:checked ~ .card .summary-18-18,#chosen-18-19:checked ~ .card .summary-18-19,#chosen-18-20:checked ~ .card .summary-18-20,#chosen-18-21:checked ~ .card .summary-18-21{display:block}
+#menna-date-app .summary-default{display:block}
+#chosen-12-18:checked ~ .card .summary-default,#chosen-12-19:checked ~ .card .summary-default,#chosen-12-20:checked ~ .card .summary-default,#chosen-12-21:checked ~ .card .summary-default,#chosen-13-18:checked ~ .card .summary-default,#chosen-13-19:checked ~ .card .summary-default,#chosen-13-20:checked ~ .card .summary-default,#chosen-13-21:checked ~ .card .summary-default,#chosen-14-18:checked ~ .card .summary-default,#chosen-14-19:checked ~ .card .summary-default,#chosen-14-20:checked ~ .card .summary-default,#chosen-14-21:checked ~ .card .summary-default,#chosen-15-18:checked ~ .card .summary-default,#chosen-15-19:checked ~ .card .summary-default,#chosen-15-20:checked ~ .card .summary-default,#chosen-15-21:checked ~ .card .summary-default,#chosen-16-18:checked ~ .card .summary-default,#chosen-16-19:checked ~ .card .summary-default,#chosen-16-20:checked ~ .card .summary-default,#chosen-16-21:checked ~ .card .summary-default,#chosen-17-18:checked ~ .card .summary-default,#chosen-17-19:checked ~ .card .summary-default,#chosen-17-20:checked ~ .card .summary-default,#chosen-17-21:checked ~ .card .summary-default,#chosen-18-18:checked ~ .card .summary-default,#chosen-18-19:checked ~ .card .summary-default,#chosen-18-20:checked ~ .card .summary-default,#chosen-18-21:checked ~ .card .summary-default{display:none}
+@media(max-width:390px){#menna-date-app{padding-left:12px;padding-right:12px}.weekdays,#menna-date-app .calendar{gap:4px}.day{font-size:13px}}
+</style>
+<div class="hero"><div class="heart">💌</div><div class="eyebrow">You have an invitation</div><h1>A Date with Menna</h1><p class="sub">Pick a time and make it official.</p></div>
+
+<!-- Navigation states -->
+<input class="step" type="radio" name="md-step" id="md-step-name" checked>
+<input class="step" type="radio" name="md-step" id="md-step-date">
+<input class="step" type="radio" name="md-step" id="md-step-time">
+<input class="step" type="radio" name="md-step" id="md-step-confirm">
+<input class="step" type="radio" name="md-step" id="md-step-done">
+
+<!-- Selected date -->
+<input type="radio" name="md-date" id="date-none" checked>
+<input type="radio" name="md-date" id="date-12">
+<input type="radio" name="md-date" id="date-13">
+<input type="radio" name="md-date" id="date-14">
+<input type="radio" name="md-date" id="date-15">
+<input type="radio" name="md-date" id="date-16">
+<input type="radio" name="md-date" id="date-17">
+<input type="radio" name="md-date" id="date-18">
+
+<!-- Time choices. These MUST come before the card so CSS can react to :checked. -->
+<input class="route-radio" type="radio" name="chosen" id="chosen-12-18"><input class="route-radio" type="radio" name="chosen" id="chosen-12-19"><input class="route-radio" type="radio" name="chosen" id="chosen-12-20"><input class="route-radio" type="radio" name="chosen" id="chosen-12-21">
+<input class="route-radio" type="radio" name="chosen" id="chosen-13-18"><input class="route-radio" type="radio" name="chosen" id="chosen-13-19"><input class="route-radio" type="radio" name="chosen" id="chosen-13-20"><input class="route-radio" type="radio" name="chosen" id="chosen-13-21">
+<input class="route-radio" type="radio" name="chosen" id="chosen-14-18"><input class="route-radio" type="radio" name="chosen" id="chosen-14-19"><input class="route-radio" type="radio" name="chosen" id="chosen-14-20"><input class="route-radio" type="radio" name="chosen" id="chosen-14-21">
+<input class="route-radio" type="radio" name="chosen" id="chosen-15-18"><input class="route-radio" type="radio" name="chosen" id="chosen-15-19"><input class="route-radio" type="radio" name="chosen" id="chosen-15-20"><input class="route-radio" type="radio" name="chosen" id="chosen-15-21">
+<input class="route-radio" type="radio" name="chosen" id="chosen-16-18"><input class="route-radio" type="radio" name="chosen" id="chosen-16-19"><input class="route-radio" type="radio" name="chosen" id="chosen-16-20"><input class="route-radio" type="radio" name="chosen" id="chosen-16-21">
+<input class="route-radio" type="radio" name="chosen" id="chosen-17-18"><input class="route-radio" type="radio" name="chosen" id="chosen-17-19"><input class="route-radio" type="radio" name="chosen" id="chosen-17-20"><input class="route-radio" type="radio" name="chosen" id="chosen-17-21">
+<input class="route-radio" type="radio" name="chosen" id="chosen-18-18"><input class="route-radio" type="radio" name="chosen" id="chosen-18-19"><input class="route-radio" type="radio" name="chosen" id="chosen-18-20"><input class="route-radio" type="radio" name="chosen" id="chosen-18-21">
+
+<div class="card">
+<section class="screen name-screen">
+<h2>Who are you?</h2><p class="small">There is only one correct answer.</p>
+<label for="md-step-date" class="choice selected-name">Kuba <span style="float:right">→</span></label>
+</section>
+
+<section class="screen date-screen">
+<label for="md-step-name" class="back">← Back</label>
+<div class="calendar-head"><span class="month-arrow" aria-hidden="true">‹</span><div class="month-title">October 2026</div><span class="month-arrow" aria-hidden="true">›</span></div>
+<div class="weekdays"><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div></div>
+<div class="calendar">
+<span class="day empty"></span><span class="day empty"></span><span class="day empty"></span>
+<span class="day">1</span><span class="day">2</span><span class="day">3</span><span class="day">4</span>
+<span class="day">5</span><span class="day">6</span><span class="day">7</span><span class="day">8</span><span class="day">9</span><span class="day">10</span><span class="day">11</span>
+<label for="date-12" class="day available d12">12</label><label for="date-13" class="day available d13">13</label><label for="date-14" class="day available d14">14</label><label for="date-15" class="day available d15">15</label><label for="date-16" class="day available d16">16</label><label for="date-17" class="day available d17">17</label><label for="date-18" class="day available d18">18</label>
+<span class="day">19</span><span class="day">20</span><span class="day">21</span><span class="day">22</span><span class="day">23</span><span class="day">24</span><span class="day">25</span>
+<span class="day">26</span><span class="day">27</span><span class="day">28</span><span class="day">29</span><span class="day">30</span><span class="day">31</span><span class="day empty"></span>
+</div>
+<div class="date-picked"><strong>Selected:</strong> <span class="date-name-default">Choose a date above</span></div>
+<div class="date-picked sel-date" id="sel12">Monday 12 October 2026</div>
+<div class="date-picked sel-date" id="sel13">Tuesday 13 October 2026</div>
+<div class="date-picked sel-date" id="sel14">Wednesday 14 October 2026</div>
+<div class="date-picked sel-date" id="sel15">Thursday 15 October 2026</div>
+<div class="date-picked sel-date" id="sel16">Friday 16 October 2026</div>
+<div class="date-picked sel-date" id="sel17">Saturday 17 October 2026</div>
+<div class="date-picked sel-date" id="sel18">Sunday 18 October 2026</div>
+<label for="md-step-time" class="continue date-next">Continue to times →</label>
+</section>
+
+<section class="screen time-screen">
+<label for="md-step-date" class="back">← Back</label>
+<h2>Pick a time</h2><p class="small">Choose one of the available times.</p>
+<div class="time-date-group time-date-12"><div class="date-picked"><strong>Monday 12 October 2026</strong></div><div class="time-grid"><label class="time-choice" for="chosen-12-18">18:00</label><label class="time-choice" for="chosen-12-19">19:00</label><label class="time-choice" for="chosen-12-20">20:00</label><label class="time-choice" for="chosen-12-21">21:00</label></div></div>
+<div class="time-date-group time-date-13"><div class="date-picked"><strong>Tuesday 13 October 2026</strong></div><div class="time-grid"><label class="time-choice" for="chosen-13-18">18:00</label><label class="time-choice" for="chosen-13-19">19:00</label><label class="time-choice" for="chosen-13-20">20:00</label><label class="time-choice" for="chosen-13-21">21:00</label></div></div>
+<div class="time-date-group time-date-14"><div class="date-picked"><strong>Wednesday 14 October 2026</strong></div><div class="time-grid"><label class="time-choice" for="chosen-14-18">18:00</label><label class="time-choice" for="chosen-14-19">19:00</label><label class="time-choice" for="chosen-14-20">20:00</label><label class="time-choice" for="chosen-14-21">21:00</label></div></div>
+<div class="time-date-group time-date-15"><div class="date-picked"><strong>Thursday 15 October 2026</strong></div><div class="time-grid"><label class="time-choice" for="chosen-15-18">18:00</label><label class="time-choice" for="chosen-15-19">19:00</label><label class="time-choice" for="chosen-15-20">20:00</label><label class="time-choice" for="chosen-15-21">21:00</label></div></div>
+<div class="time-date-group time-date-16"><div class="date-picked"><strong>Friday 16 October 2026</strong></div><div class="time-grid"><label class="time-choice" for="chosen-16-18">18:00</label><label class="time-choice" for="chosen-16-19">19:00</label><label class="time-choice" for="chosen-16-20">20:00</label><label class="time-choice" for="chosen-16-21">21:00</label></div></div>
+<div class="time-date-group time-date-17"><div class="date-picked"><strong>Saturday 17 October 2026</strong></div><div class="time-grid"><label class="time-choice" for="chosen-17-18">18:00</label><label class="time-choice" for="chosen-17-19">19:00</label><label class="time-choice" for="chosen-17-20">20:00</label><label class="time-choice" for="chosen-17-21">21:00</label></div></div>
+<div class="time-date-group time-date-18"><div class="date-picked"><strong>Sunday 18 October 2026</strong></div><div class="time-grid"><label class="time-choice" for="chosen-18-18">18:00</label><label class="time-choice" for="chosen-18-19">19:00</label><label class="time-choice" for="chosen-18-20">20:00</label><label class="time-choice" for="chosen-18-21">21:00</label></div></div>
+<label for="md-step-confirm" class="continue time-next">Continue to confirmation →</label>
+</section>
+
+<section class="screen confirm-screen">
+<label for="md-step-time" class="back">← Back</label>
+<h2>Make it official 💕</h2><p class="small">Check the details, then pay the €30 date fee through Tikkie.</p>
+<div class="confirm-summary summary-default"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Choose a date and time</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-12-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Monday 12 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-12-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Monday 12 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-12-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Monday 12 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-12-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Monday 12 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-13-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Tuesday 13 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-13-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Tuesday 13 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-13-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Tuesday 13 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-13-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Tuesday 13 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-14-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Wednesday 14 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-14-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Wednesday 14 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-14-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Wednesday 14 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-14-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Wednesday 14 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-15-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Thursday 15 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-15-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Thursday 15 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-15-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Thursday 15 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-15-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Thursday 15 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-16-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Friday 16 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-16-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Friday 16 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-16-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Friday 16 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-16-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Friday 16 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-17-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Saturday 17 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-17-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Saturday 17 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-17-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Saturday 17 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-17-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Saturday 17 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-18-18"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>18:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-18-19"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>19:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-18-20"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>20:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<div class="confirm-summary summary-18-21"><div class="selected-summary"><div class="row"><span>Name</span><strong>Kuba</strong></div><div class="row"><span>Date</span><strong>Sunday 18 October 2026</strong></div><div class="row"><span>Time</span><strong>21:00</strong></div><div class="row"><span>Price</span><strong>€30.00</strong></div></div></div>
+<a class="pay" href="https://tikkie.me/pay/3o2bp83i0a0tfc2367hi" target="_blank" rel="noopener noreferrer">Pay €30 via Tikkie →</a>
 <label for="md-step-done" class="continue">I've paid, show confirmation →</label>
 </section>
 
